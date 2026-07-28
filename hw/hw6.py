@@ -1,10 +1,11 @@
-from colorama import Fore, Back, Style, init
+from colorama import init, Fore
+
+# Эта библиотека нужна для изменения цвета текста в консоли.
+# Она позволяет делать вывод программы более красивым и удобным для чтения.
 
 init(autoreset=True)
 
-print(Fore.RED + "Это красный текст")
-print(Fore.GREEN + "Это зелёный текст")
-print(Back.YELLOW + Fore.BLACK + "Чёрный текст на жёлтом фоне")
-print(Style.BRIGHT + Fore.CYAN + "Это яркий голубой текст")
-print(Style.NORMAL + "А это обычный текст без цвета")
-
+print(Fore.GREEN + "Привет, мир!")
+print(Fore.YELLOW + "Это желтый текст.")
+print(Fore.RED + "Это красный текст.")
+print(Fore.BLUE + "Это синий текст.")
