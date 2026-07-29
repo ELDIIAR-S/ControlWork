@@ -1,35 +1,59 @@
-# #Декоратр
-# def simple_decorator(func):
-#     def wrapper():
-#         print('До выполнения!!!')
-#         func()
-#         print('после выполнения!!')
-#     return wrapper
-#
+def simple_decorator(func):
+    def wrapper():
+        print('До выполнения!!!')
+        func()
+        print('после выполнения!!')
+    return wrapper
+
 # @simple_decorator
 # def hello():
 #     print('Hello')
-#
+
 # hello()
 
-from colorama import Fore, Back, Style, init
 
-init(autoreset=True)
 
-print(Fore.RED + "Это красный текст")
-print(Fore.GREEN + "Это зелёный текст")
-print(Back.YELLOW + Fore.BLACK + "Чёрный текст на жёлтом фоне")
-print(Style.BRIGHT + Fore.CYAN + "Это яркий голубой текст")
-print(Style.NORMAL + "А это обычный текст без цвета")
+# @greeting
+# def say_hello(name):
+#     print(f"Как дела {name}?")
 
-from colorama import init, Fore
 
-# Эта библиотека нужна для изменения цвета текста в консоли.
-# Она используется, чтобы выводить сообщения разными цветами
-# и делать программу более наглядной и удобной для чтения.
+# say_hello('Ardager')
+def greeting(func):
+    def wrapper(name):
+        print(f'Привет {name}')
+        func(name)
+    return wrapper
 
-init(autoreset=True)
+def repeat_decorator(value):
+    def decorator(func):
+        def wrapper(name):
+            for i in range(value):
+                func(name)
+        return wrapper
+    return decorator
 
-print(Fore.GREEN + "Привет!")
-print(Fore.YELLOW + "Это желтый текст.")
-print(Fore.RED + "Это красный текст.")
+
+@greeting
+@repeat_decorator(5)
+def say_hello(name):
+    print(f"Как дела {name}?")
+
+# say_hello("Ardager")
+
+
+def class_decorator(cls):
+    class NewClass(cls):
+        def action(self):
+            print("New action!!")
+    return NewClass
+
+# @class_decorator
+class OldClass:
+    def action(self):
+        print("Old action!!")
+
+test_obj = OldClass()
+
+test_obj.action()
+print(type(test_obj))
