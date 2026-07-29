@@ -9,4 +9,4 @@ print(Fore.GREEN + "Программа запущена успешно!" + Style
 
 print(Fore.BLUE + "Используется библиотека colorama" + Style.RESET_ALL)
 
-print(Fore.RED + "Это сообщение красного цвета" + Style.RESET_ALL)L)
+print(Fore.RED + "Это сообщение красного цвета" + Style.RESET_ALL)
