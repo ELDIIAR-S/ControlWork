@@ -1,12 +1,32 @@
-from colorama import Fore, Style, init
+from colorama import init, Fore, Back, Style
 
-init()
+init(autoreset=True)
 
-# Эта библиотека нужна для изменения цвета текста в консоли.
-# Она используется, чтобы сделать вывод программы более удобным и понятным.
 
-print(Fore.GREEN + "Программа запущена успешно!" + Style.RESET_ALL)
+def show_status(message: str, status: str = "info") -> None:
+    """Выводит сообщение разным цветом в зависимости от типа статуса."""
+    colors = {
+        "info": Fore.CYAN,
+        "success": Fore.GREEN,
+        "warning": Fore.YELLOW,
+        "error": Fore.RED,
+    }
+    color = colors.get(status, Fore.WHITE)
+    print(color + f"[{status.upper()}] {message}" + Style.RESET_ALL)
 
-print(Fore.BLUE + "Используется библиотека colorama" + Style.RESET_ALL)
 
-print(Fore.RED + "Это сообщение красного цвета" + Style.RESET_ALL)
+def main() -> None:
+    print(Style.BRIGHT + Fore.MAGENTA + "=== Демонстрация библиотеки colorama ===")
+    print()
+
+    show_status("Программа запущена", "info")
+    show_status("Файл успешно загружен", "success")
+    show_status("Проверьте настройки конфигурации", "warning")
+    show_status("Не удалось подключиться к серверу", "error")
+
+    print()
+    print(Back. BLACK + Fore.WHITE + " Пример текста с цветным фоном " + Style.RESET_ALL)
+
+
+if __name__ == "__main__":
+    main()
